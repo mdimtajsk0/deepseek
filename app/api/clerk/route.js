@@ -1,5 +1,5 @@
 import { Webhook } from "svix";
-import connectDB from "@/app/config/db";
+import connectDB from "config/db";
 import User from "@/models/User";
 import { headers } from "next/headers";
 import { NextRequest } from "next/server";
@@ -23,8 +23,8 @@ export async function POST(req){
 
     const userData = {
         _id: data.id,
-        email: data.email_address[0].email_address,
-        name: `${data.first_name} ${data.last_nmae}`,
+        email: data.email_addresses[0].email_addresses,
+        name: `${data.first_name} ${data.last_name}`,
         image: data.image_url,
 
     };
@@ -51,3 +51,5 @@ export async function POST(req){
 
     return NextRequest.json({message: "Event received"});
 }
+
+
